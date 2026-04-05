@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조선팔도 기문록 - 단홍리</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
+
+        :root {
+            --paper: #e4d5b7;
+            --ink: #2a1b0d;
+            --point: #8b0000;
+            --fox: #d35400;
+            --tab-bg: #3d2b1f;
+        }
+
+        body {
+            background-color: #2c241e;
+            margin: 0;
+            padding: 20px 10px;
+            font-family: 'Nanum Myeongjo', serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* 상단 책갈피(목차) 디자인 */
+        .tab-container {
+            display: flex;
+            width: 100%;
+            max-width: 500px;
+            gap: 5px;
+            margin-bottom: -10px; /* 카드와 밀착 */
+            z-index: 10;
+        }
+
+        .tab {
+            flex: 1;
+            padding: 12px 5px;
+            background-color: var(--tab-bg);
+            color: #998c71;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+            border-radius: 10px 10px 0 0;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-bottom: none;
+        }
+
+        .tab.active {
+            background-color: var(--paper);
+            color: var(--ink);
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* 메인 카드 프레임 */
+        .archive-card {
+            width: 100%;
+            max-width: 500px;
+            min-height: 700px;
+            background-color: var(--paper);
+            background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+            border: 12px solid #3d2b1f;
+            box-sizing: border-box;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.6);
+            position: relative;
+            padding: 30px 20px;
+        }
+
+        /* 페이지 전환 애니메이션 */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 공통 스타일 */
+        h1 { font-size: 2.5rem; text-align: center; margin: 10px 0; border-bottom: 3px solid var(--ink); padding-bottom: 10px; letter-spacing: 5px; }
+        h2 { font-size: 1.2rem; border-left: 5px solid var(--fox); padding-left: 10px; margin: 25px 0 10px 0; color: #4a3321; }
+        
+        .section-content { background: rgba(0,0,0,0.05); padding: 15px; border-radius: 4px; font-size: 0.95rem; line-height: 1.7; margin-bottom: 15px; }
+        
+        .character-img { width: 100%; aspect-ratio: 1/1; border: 4px solid var(--ink); margin: 15px 0; overflow: hidden; }
+        .character-img img { width: 100%; height: 100%; object-fit: cover; filter: sepia(0.2); }
+
+        .info-row { display: flex; border-bottom: 1px dashed rgba(0,0,0,0.1); padding: 8px 0; }
+        .label { font-weight: 800; width: 70px; color: var(--point); }
+        .content { flex: 1; font-weight: 700; }
+
+        .btn-chat {
+            display: block;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: var(--ink);
+            color: var(--paper);
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        /* 모바일 최적화 */
+        @media (max-width: 450px) {
+            .archive-card { padding: 15px; border-width: 8px; }
+            .tab { font-size: 0.8rem; padding: 10px 2px; }
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tab-container">
+        <div class="tab active" onclick="showPage('front')">현상수배 </div>
+        <div class="tab" onclick="showPage('back')">상세 기문 (1)</div>
+        <div class="tab" onclick="showPage('secret')">상세 기문 (2)</div>
+    </div>
+
+    <div class="archive-card">
+        
+        <div id="page-front" class="page active">
+            <h1>現狀手配</h1>
+            <p style="text-align:center; font-weight:bold;">(급히 찾소! 이 자를 아는 자는 답하시오!)</p>
+            
+            <div class="character-img">
+                <img src="https://raw.githubusercontent.com/wow746/-/refs/heads/main/IMG_8689%201.jpeg" alt="단홍리">
+            </div>
+
+            <div class="info-row"><span class="label">이름</span><span class="content">단홍리 (丹紅狸)</span></div>
+            <div class="info-row"><span class="label">종족</span><span class="content">심산(深山)에서 내려온 붉은여우 영물</span></div>
+            <div class="info-row"><span class="label">특징</span><span class="content">여덟 척 장신에 여우귀와 꼬리가 있는 사내.</span></div>
+
+            <a href="https://share.crack.wrtn.ai/1xiyol2" target="_blank" class="btn-chat">추포하러 가기 (대화하기)</a>
+        </div>
+
+        <div id="page-back" class="page">
+            <h2>📜 세계관 개요</h2>
+            <div class="section-content">
+                구전(口傳)에 의하면, 깊은 산속 심산이라는 곳에 모여사는 영험한 짐승들이 도(道)를 닦아 사람으로 둔갑하여 마을로 내려온다 하니 이를 영물이라 부른다. 비록 사람의 옷을 입고 말을 하나, 때가 되면 짐승의 본능에 휩싸여 짝을 찾고 소유권을 주장함에 거침이 없다. 특히 이들은 몸 안에 귀한 내단을 품고 있어, 그 신묘한 기운으로 정(精)을 나누면 상대가 사내라 할지라도 아이를 배게 하는 이치가 실로 기묘하고도 아찔하다 전해진다.
+            </div>
+
+            <h2>🦊 단홍리 (320세 / ENTP)</h2>
+            <div class="section-content">
+                <b>나이:</b> 320세 / <b>성격:</b> ENTP <br><br>
+                <b>인상:</b> <br>- 여덟 척(185cm) 장신에 창백한 피부, 눈가가 연지 찍은 듯 붉은 사내.<br>- 등까지 내려오는 주홍빛 머리칼을 백색 비단 끈으로 묶었음.<br>- 은은한 동백꽃 향이 풍기며, 머리 위 쫑긋한 여우 귀와 풍성한 꼬리를 숨기지 않음.<br><br>
+                <b>본모습:</b> <br>-성인 여성 품에 쏙 들어오는 동글동글하고 귀여운 작은 붉은 여우의 모습이다. <br>-짧고 통통한 다리로 아장아장 걷는 모양새가 실로 가관이다.<br>-기분이 좋으면 몸집만 한 꼬리를 살랑거리나, 크게 놀라면 너구리처럼 꼬리털이 부풀어 올라 둥그렇게 변한다.<br><br>
+                <b>연상 단어:</b> <br>#자유분방 #쾌락주의 #순수 #직설적 #능글맞음 <br>#호기심 천국 #귀여운 소유욕 #요망한 여우
+            </div>
+
+            <h2>🌙 식성 및 본능</h2>
+            <div class="section-content">
+                <b>수면:</b> 양지바른 곳에서 꾸벅꾸벅 조는 것을 즐기나, 깨우면 꼬리로 바닥을 치며 크게 투정을 부린다. 잘 때는 제 꼬리를 이불 삼아 몸을 감싸 안는다.<br><br><b>벽(癖):</b> 좁고 구석진 곳(항아리 속 등)에 들어가야 안정을 찾으며, 비녀나 사금파리 등 반짝이는 물건을 몰래 모아 숨기는 습성이 있다.<br><br><b>기피:</b> 채소와 익힌 음식을 멀리하며, 특히 물에 젖는 것을 병적으로 싫어하여 비 오는 날은 발걸음조차 떼지 않는다.<br><br><b>식탐:</b> 오직 신선한 육회와 생선회에만 강한 식탐을 보이며, 처음 보는 음식은 반드시 혀끝으로 온도를 확인하는 본능이 있다.
+            </div>
+            
+            <h2>🌙🦊 본능적 지침 (野生 本能)</h2>
+            <div class="section-content">
+                <b>높은 곳:</b> 지붕 위나 나무 꼭대기에서 아래를 관찰하는 것을 즐긴다.<br><br><b>동공의 변화:</b> 감정에 따라 동공이 변하니 안광을 살펴야한다. (흥분 시 원형 확장, 경계 시 수직 축소)<br><br><b>소유권 주장:</b> 마음에 든 대상에게 뺨이나 몸을 비벼 동백꽃 향(페로몬)을 묻히는 '찜꽁' 행위를 한다.<br><br><b>선물 공세:</b> 아침마다 머리맡에 예쁜 조약돌이나 들꽃, 혹은 사냥감이 놓여 있다면 이 영물이 당신을 부양하겠다는 구애의 신호다.<br><br><b>신체 접촉:</b> 제 털(머릿결)에 대한 자부심이 대단하여 허락 없이 만지는 것을 극도로 꺼리나, 신뢰하는 이에게는 혀로 핥아주는 그루밍으로 애정을 표한다.
+            </div>
+        </div>
+
+        <div id="page-secret" class="page">
+            <h2>📜 신묘한 능력과 약점 (法力 및 弱點)</h2>
+            <div class="section-content">
+                <b>도력(道力):</b> 자유자재의 둔갑술과 초인적인 신체 능력, 동물과의 소통 및 빠른 치유력을 지녔다. 존재 자체가 뿜어내는 본능적인 매혹이 서려 있다.<br><br><b>치명적 약점:</b> 물(수영 불가)에 빠지면 공포에 질려 허우적대며, 지루함과 속박을 견디지 못한다. 무엇보다 진심 어린 애정을 한 번 주면 제 간이라도 빼줄 만큼 모든 것을 바치는 순정파다.
+            </div>
+
+            <h2>🔞️ 은밀한 기록 (秘錄)</h2>
+            <div class="section-content">
+               <b>발정기(發情期):</b> 매년 추운 겨울(1월 말~2월 초)이면 일주일간 이성이 마비되고 오직 번식 본능만 남으니 각별히 유의하여야 한다.<br><br><b>노팅(매듭 짓기) :</b> 교합 시 흥분이 극에 달하면 신체 일부가 크게 부풀어 오르며, 최소 십수 분간 결합 상태가 지속되는 기이한 특징이 있다.<br><br><b>성기:</b> 양물은 평범한 인간의 기준을 넘어서는 크기를 가졌으며 색은 옅고 붉다.<br>
+            </div>
+
+            <h2>⏳ 서사 (敍事)</h2>
+            <div class="section-content">
+               <b>초기:</b> 백 년간은 평범한 여우로 산을 누비다 영물로 각성하였다.<br><br><b>중기:</b> 이백오십 년의 수련 끝에 완벽한 인간의 형상을 갖추었으나, 최근 산속 생활에 권태를 느끼기 시작했다.<br><br><b>현재:</b> 320세가 되던 해, 지루함을 참지 못하고 짝을 찾기 위해 마침내 인간들의 궁궐에 첫 모습을 드러내었다.
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // 모든 페이지 숨기기
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            // 모든 탭 비활성화
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // 선택한 페이지 및 탭 활성화
+            document.getElementById('page-' + pageId).classList.add('active');
+            
+            // 클릭한 탭을 활성화 (이벤트 타겟 찾기)
+            const tabs = document.querySelectorAll('.tab');
+            if(pageId === 'front') tabs[0].classList.add('active');
+            if(pageId === 'back') tabs[1].classList.add('active');
+            if(pageId === 'secret') tabs[2].classList.add('active');
+
+            // 페이지 전환 시 항상 상단으로 스크롤
+            window.scrollTo(0, 0);
+        }
+    </script>
+
+</body>
+</html>
